@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="favicon.ico" rel="icon" type="image/x-icon">
+    <title>Digital Book Of Dragons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .navbar a.active {
+            background-color: #4CAF50;
+        }
+
+        h1 {
+            margin: 20px;
+        }
+
+        .filters {
+            margin: 20px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            align-content: center;
+        }
+
+        .filters input[type="text"],
+        .filters select {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .filters button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .filters button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        .actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .actions a:hover {
+            text-decoration: underline;
+        }
+
+        .actions .edit-button {
+            background-color: #ffc107;
+            color: white;
+            padding: 5px 14.5px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'RunesFont', sans-serif;
+            /* Fallback to sans-serif */
+            font-size: 1em;
+            /* Adjust size as needed */
+            text-align: center;
+            align-items: center;
+            margin-bottom: 10px;
+
+        }
+
+        .actions .edit-button:hover {
+            background-color: #e0a800;
+        }
+
+        .actions .delete-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'RunesFont', sans-serif;
+            /* Fallback to sans-serif */
+            font-size: 1em;
+            /* Adjust size as needed */
+            text-align: center;
+        }
+
+        @font-face {
+            font-family: 'RunesFont';
+            src: url('fonts/ComicRunes.otf') format('opentype');
+        }
+
+        .runes {
+            font-family: 'RunesFont', sans-serif;
+            /* Fallback to sans-serif */
+            font-size: 2.5em;
+            /* Adjust size as needed */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+
+        .runes2 {
+            font-family: 'RunesFont', sans-serif;
+            /* Fallback to sans-serif */
+            font-size: 1em;
+            /* Adjust size as needed */
+            text-align: center;
+        }
+
+
+        .actions .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        .filters {
+            display: flex;
+            /* Use flexbox for layout */
+            justify-content: center;
+            /* Center items horizontally */
+            align-items: center;
+            /* Center items vertically */
+            gap: 10px;
+            /* Add spacing between elements */
+            margin: 20px 0;
+            /* Add optional margin for spacing around the container */
+        }
+
+        .filters form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            /* Spacing between form elements */
+        }
+
+        .filters input[type="text"] {
+            padding: 8px;
+            /* Add padding for better spacing */
+            font-size: 14px;
+            /* Adjust font size */
+            font-family: 'RunesFont', sans-serif;
+            /* Apply your custom font */
+            width: 160px;
+            /* Set an appropriate width */
+            box-sizing: border-box;
+            /* Ensures padding is included in width */
+        }
+
+        .filters input[type="text"]::placeholder {
+            white-space: nowrap;
+            /* Prevent placeholder text from wrapping */
+            overflow: hidden;
+            /* Hide overflow if necessary */
+            text-overflow: ellipsis;
+            /* Add ellipsis if text overflows */
+        }
+
+        /* .filters input[type="text"] {
+            padding: 8px;
+            font-size: 14px;
+            padding-right: 50px;
+            font-family: 'RunesFont', sans-serif;
+        } */
+
+        .filters select {
+            padding: 8px;
+            font-size: 14px;
+            font-family: 'RunesFont', sans-serif;
+            /* Fallback to sans-serif */
+            /* Adjust size as needed */
+            text-align: center;
+        }
+
+        .filters button {
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            font-family: 'RunesFont', sans-serif;
+            /* Fallback to sans-serif */
+            /* Adjust size as needed */
+            text-align: center;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="add_dragon.php">Add Dragon</a>
+        <a href="manage_dragons.php">Manage Dragons</a>
+        <a href="dragon_book.php" class="active">Digital Book Of Dragons</a>
+    </div>
+
+    <h1 class="runes">Digital Book Of Dragons</h1>
+
+
+
+    <?php $stmt->close();
+    $conn->close(); ?>
+</body>
+
+</html>
